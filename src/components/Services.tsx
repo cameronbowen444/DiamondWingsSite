@@ -77,7 +77,10 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="relative overflow-hidden bg-[#08090b] px-4 py-24 text-white md:px-8">
+    <section
+      id="services"
+      className="relative overflow-hidden bg-[#08090b] px-4 py-24 text-white md:px-8"
+    >
       {/* Background glow */}
       <div className="absolute left-[-160px] top-20 h-96 w-96 rounded-full bg-[#f2eadc]/5 blur-3xl" />
       <div className="absolute bottom-0 right-[-160px] h-96 w-96 rounded-full bg-white/5 blur-3xl" />
@@ -124,38 +127,43 @@ export default function Services() {
                 key={service.title}
                 variants={fadeUp}
                 whileHover={{
-                  y: -10,
+                  y: -8,
                 }}
                 transition={{
                   duration: 0.25,
                   ease: "easeOut",
                 }}
-                className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] shadow-2xl backdrop-blur-xl"
+                className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.035] shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl"
               >
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-60 overflow-hidden sm:h-64">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover transition duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                    className="object-cover object-center brightness-110 contrast-105 saturate-110 transition duration-700 group-hover:scale-105"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#08090b] via-[#08090b]/35 to-transparent" />
+                  {/* Light polish only — keeps images clear */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#08090b]/45 via-transparent to-transparent" />
 
-                  <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-4 py-2 backdrop-blur-xl">
+                  {/* Tiny top shine, not a dark overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-70" />
+
+                  <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-white/15 bg-black/35 px-4 py-2 shadow-[0_10px_35px_rgba(0,0,0,0.35)] backdrop-blur-xl">
                     <Icon size={16} className="text-[#d8c7a3]" />
-                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/80">
+                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-white">
                       {service.tag}
                     </span>
                   </div>
                 </div>
 
                 <div className="p-6">
-                  <h3 className="mb-3 text-2xl font-bold tracking-[-0.04em]">
+                  <h3 className="mb-3 text-2xl font-bold tracking-[-0.04em] text-white">
                     {service.title}
                   </h3>
 
-                  <p className="mb-6 min-h-[96px] text-sm leading-7 text-white/60">
+                  <p className="mb-6 min-h-[96px] text-sm leading-7 text-white/62">
                     {service.description}
                   </p>
 
@@ -163,12 +171,12 @@ export default function Services() {
                     <Link
                       href="https://book.mylimobiz.com/v4/diamondwings"
                       target="_blank"
-                      className="inline-flex items-center gap-2 rounded-full bg-[#f2eadc] px-5 py-3 text-sm font-bold text-[#090909] transition hover:bg-white"
+                      className="group/btn inline-flex items-center gap-2 rounded-full bg-[#f2eadc] px-5 py-3 text-sm font-bold text-[#090909] transition hover:bg-white"
                     >
                       Get Quote
                       <ArrowRight
                         size={16}
-                        className="transition group-hover:translate-x-1"
+                        className="transition group-hover/btn:translate-x-1"
                       />
                     </Link>
 

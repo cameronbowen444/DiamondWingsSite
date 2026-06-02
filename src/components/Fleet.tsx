@@ -94,7 +94,10 @@ export default function Fleet() {
   };
 
   return (
-    <section id="fleet" className="relative overflow-hidden bg-[#08090b] px-4 py-24 text-white md:px-8">
+    <section
+      id="fleet"
+      className="relative overflow-hidden bg-[#08090b] px-4 py-24 text-white md:px-8"
+    >
       <div className="absolute left-1/2 top-24 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[#f2eadc]/5 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
@@ -167,12 +170,20 @@ export default function Fleet() {
                     alt={activeFleet.name}
                     fill
                     priority
-                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 55vw"
+                    className="object-cover object-center brightness-110 contrast-105 saturate-110 transition duration-700"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#08090b]/70 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-[#08090b]/65" />
+                  {/* Light image polish only — keeps vehicles clear */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#08090b]/35 via-transparent to-transparent" />
 
-                  <div className="absolute left-5 top-5 rounded-full border border-white/10 bg-black/45 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[#d8c7a3] backdrop-blur-xl">
+                  {/* Desktop side fade, much lighter than before */}
+                  <div className="absolute inset-0 hidden lg:block lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#08090b]/32" />
+
+                  {/* Small shine so image feels premium, not dark */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-60" />
+
+                  <div className="absolute left-5 top-5 rounded-full border border-white/15 bg-black/40 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[#d8c7a3] shadow-[0_10px_35px_rgba(0,0,0,0.35)] backdrop-blur-xl">
                     {activeFleet.category}
                   </div>
                 </div>
@@ -222,10 +233,13 @@ export default function Fleet() {
                     <Link
                       href="https://book.mylimobiz.com/v4/diamondwings"
                       target="_blank"
-                      className="inline-flex items-center justify-center gap-3 rounded-full bg-[#f2eadc] px-6 py-3.5 text-sm font-bold text-[#090909] shadow-[0_0_45px_rgba(242,234,220,0.16)] transition hover:bg-white"
+                      className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#f2eadc] px-6 py-3.5 text-sm font-bold text-[#090909] shadow-[0_0_45px_rgba(242,234,220,0.16)] transition hover:bg-white"
                     >
                       Reserve This
-                      <ArrowRight size={17} />
+                      <ArrowRight
+                        size={17}
+                        className="transition group-hover:translate-x-1"
+                      />
                     </Link>
 
                     <a
