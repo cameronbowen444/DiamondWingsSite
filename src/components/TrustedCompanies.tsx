@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useAnimationFrame, useMotionValue } from "framer-motion";
+import { useRef, useState } from "react";
 
 const companies = [
   {
@@ -48,6 +49,36 @@ const companies = [
 export default function TrustedCompanies() {
   const duplicatedCompanies = [...companies, ...companies];
 
+  const x = useMotionValue(0);
+  const sliderRef = useRef<HTMLDivElement | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const wrapPosition = (value: number) => {
+    if (!sliderRef.current) return value;
+
+    const singleSetWidth = sliderRef.current.scrollWidth / 2;
+
+    if (value <= -singleSetWidth) {
+      return value + singleSetWidth;
+    }
+
+    if (value >= 0) {
+      return value - singleSetWidth;
+    }
+
+    return value;
+  };
+
+  useAnimationFrame((_, delta) => {
+    if (isDragging) return;
+
+    const speed = 0.025; // smaller = slower, bigger = faster
+    const currentX = x.get();
+    const nextX = currentX - speed * delta;
+
+    x.set(wrapPosition(nextX));
+  });
+
   return (
     <section className="relative overflow-hidden bg-[#08090b] px-4 py-16 text-white md:px-8">
       {/* Divider lines */}
@@ -70,11 +101,11 @@ export default function TrustedCompanies() {
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-white/55 md:text-base">
             Diamond Wings provides luxury chauffeur service for airport
             transfers, business travel, entertainment transportation, private
-            events, and high-profile guests throughout Los Angeles with many NDAs signed exclusively.
+            events, and high-profile guests throughout Los Angeles.
           </p>
         </div>
 
-        <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#0d0e10] py-7 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+        <div className="relative cursor-grab overflow-hidden rounded-[2rem] border border-white/10 bg-[#0d0e10] py-7 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl active:cursor-grabbing">
           {/* Left fade */}
           <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-16 bg-gradient-to-r from-[#08090b] to-transparent md:w-32" />
 
@@ -82,15 +113,17 @@ export default function TrustedCompanies() {
           <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-16 bg-gradient-to-l from-[#08090b] to-transparent md:w-32" />
 
           <motion.div
-            className="flex w-max items-center gap-5"
-            animate={{
-              x: ["0%", "-50%"],
+            ref={sliderRef}
+            style={{ x }}
+            drag="x"
+            dragMomentum={false}
+            dragElastic={0.08}
+            onDragStart={() => setIsDragging(true)}
+            onDragEnd={() => {
+              x.set(wrapPosition(x.get()));
+              setIsDragging(false);
             }}
-            transition={{
-              duration: 85,
-              ease: "linear",
-              repeat: Infinity,
-            }}
+            className="flex w-max touch-pan-y select-none items-center gap-5"
           >
             {duplicatedCompanies.map((company, index) => (
               <div
@@ -100,7 +133,8 @@ export default function TrustedCompanies() {
                 <img
                   src={company.logo}
                   alt={`${company.name} logo`}
-                  className="max-h-16 max-w-[165px] object-contain transition duration-300 group-hover:scale-105 md:max-h-20 md:max-w-[190px]"
+                  draggable={false}
+                  className="pointer-events-none max-h-16 max-w-[165px] object-contain transition duration-300 group-hover:scale-105 md:max-h-20 md:max-w-[190px]"
                 />
               </div>
             ))}
