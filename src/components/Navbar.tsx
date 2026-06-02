@@ -27,7 +27,7 @@ export default function Navbar() {
             </div>
           </Link>
 
-          <div className="hidden items-center gap-4 md:flex">
+          <div className="hidden items-center gap-4 lg:flex">
             <a
               href="tel:3102924112"
               className="group flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.03] px-6 py-3 font-semibold text-white transition hover:border-[#d8c7a3]/60 hover:bg-white/[0.08]"
@@ -52,7 +52,7 @@ export default function Navbar() {
       </header>
 
       {/* Mobile sticky bottom buttons */}
-      <div className="fixed bottom-0 left-0 z-50 grid w-full grid-cols-2 gap-3 border-t border-white/10 bg-[#08090b]/90 px-4 py-4 backdrop-blur-2xl md:hidden">
+      <div className="fixed bottom-0 left-0 z-50 grid w-full grid-cols-2 gap-3 border-t border-white/10 bg-[#08090b]/90 px-4 py-4 backdrop-blur-2xl lg:hidden">
         <a
           href="tel:8182924112"
           className="flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-4 text-sm font-bold text-white shadow-2xl"
