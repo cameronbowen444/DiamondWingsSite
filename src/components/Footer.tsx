@@ -36,7 +36,7 @@ export default function Footer() {
               </Link>
 
               <a
-                href="tel:8182924112"
+                href="tel:8186264592"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-6 py-3 text-sm font-bold text-white transition hover:bg-white/[0.09]"
               >
                 <Phone size={16} className="text-[#d8c7a3]" />

@@ -307,7 +307,7 @@ export default function Locations() {
             </Link>
 
             <a
-              href="tel:8182924112"
+              href="tel:8186264592"
               className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.04] px-7 py-4 font-bold text-white transition hover:bg-white/[0.09]"
             >
               Call for Service Area

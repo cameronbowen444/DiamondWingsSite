@@ -13,10 +13,11 @@ import {
   Star,
 } from "lucide-react";
 
-import sclassImg from "@/assets/fleet/sclass.png";
+
 import navigatorImg from "@/assets/fleet/navigator.png";
-import escaladeImg from "@/assets/fleet/escalade.png";
 import sprinterImg from "@/assets/fleet/sprinter.png";
+import teslaModelSImg from "@/assets/fleet/tesla.png";
+import suburbanImg from "@/assets/fleet/suburban.png";
 
 const fadeUp: Variants = {
   hidden: {
@@ -35,17 +36,6 @@ const fadeUp: Variants = {
 
 const fleets = [
   {
-    name: "Mercedes S-Class",
-    category: "Executive Sedan",
-    image: sclassImg,
-    passengers: 3,
-    luggage: 3,
-    year: "2024",
-    description:
-      "A refined executive sedan built for airport transfers, business travel, and private luxury rides.",
-    features: ["Quiet cabin", "Executive comfort", "Premium arrival"],
-  },
-  {
     name: "Lincoln Navigator",
     category: "Luxury SUV",
     image: navigatorImg,
@@ -57,17 +47,6 @@ const fleets = [
     features: ["Spacious seating", "VIP presence", "Smooth ride"],
   },
   {
-    name: "Cadillac Escalade",
-    category: "Premium SUV",
-    image: escaladeImg,
-    passengers: 6,
-    luggage: 5,
-    year: "2024",
-    description:
-      "A luxury SUV with a strong presence, ideal for special events, airport service, and private bookings.",
-    features: ["Luxury interior", "Large cargo space", "Event ready"],
-  },
-  {
     name: "Mercedes Sprinter",
     category: "Executive Van",
     image: sprinterImg,
@@ -77,6 +56,28 @@ const fleets = [
     description:
       "A premium group transportation option for corporate teams, roadshows, weddings, and private events.",
     features: ["Group travel", "High roof comfort", "Private shuttle"],
+  },
+  {
+    name: "Tesla Model S",
+    category: "Luxury Electric Sedan",
+    image: teslaModelSImg,
+    passengers: 4,
+    luggage: 3,
+    year: "2024",
+    description:
+      "A sleek, quiet, and modern luxury sedan perfect for executive rides, airport transfers, date nights, and premium city travel.",
+    features: ["All-electric ride", "Quiet cabin", "Executive comfort"],
+  },
+  {
+    name: "Chevy Suburban",
+    category: "Premium Full-Size SUV",
+    image: suburbanImg,
+    passengers: 7,
+    luggage: 6,
+    year: "2024",
+    description:
+      "A roomy and reliable full-size SUV built for families, airport pickups, group travel, and comfortable long-distance rides.",
+    features: ["Extra cargo room", "Family friendly", "Comfortable seating"],
   },
 ];
 
