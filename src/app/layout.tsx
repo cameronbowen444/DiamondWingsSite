@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cinzel, Open_Sans } from "next/font/google";
+import { Cinzel, Manrope } from "next/font/google";
 import "./globals.css";
 
 const cinzel = Cinzel({
@@ -8,8 +8,8 @@ const cinzel = Cinzel({
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-const openSans = Open_Sans({
-  variable: "--font-open-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
 });
@@ -108,7 +108,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${cinzel.variable} ${openSans.variable}`}>
+      <body className={`${cinzel.variable} ${manrope.variable}`}>
         {children}
       </body>
     </html>

@@ -15,8 +15,8 @@ export default function Home() {
       <TrustedCompanies />
       <Services />
       <Fleet />
-      <Reviews />
       <Locations />
+      <Reviews />
       <Footer />
     </main>
   );

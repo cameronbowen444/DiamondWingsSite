@@ -3,3 +3,32 @@
 html {
   scroll-behavior: smooth;
 }
+
+html,
+body {
+  font-family: var(--font-manrope), sans-serif;
+}
+
+* {
+  font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-cinzel), serif;
+}
+
+button,
+input,
+textarea,
+select,
+a,
+p,
+span,
+li {
+  font-family: var(--font-manrope), sans-serif;
+}

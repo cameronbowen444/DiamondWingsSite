@@ -1,132 +1,97 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Phone, MapPin, ArrowRight } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
+import logo from "@/assets/logo.png";
+
+const links = [
+  { name: "Services", href: "#services" },
+  { name: "Fleet", href: "#fleet" },
+  { name: "Locations", href: "#locations" },
+  { name: "Reviews", href: "#reviews" },
+];
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-[#060708] px-4 pb-28 pt-16 text-white md:px-8 md:pb-10">
-      <div className="absolute left-[-160px] top-10 h-80 w-80 rounded-full bg-[#f2eadc]/5 blur-3xl" />
-      <div className="absolute bottom-[-160px] right-[-120px] h-80 w-80 rounded-full bg-white/5 blur-3xl" />
-
-      <div className="relative z-10 mx-auto max-w-7xl">
-        <div className="grid gap-10 border-b border-white/10 pb-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr_1fr]">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[#050607] px-4 pb-28 pt-14 text-white md:px-8 md:pb-10 md:pt-20">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-10 pb-10 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
-            <Link href="/" className="inline-block">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#d8c7a3]">
-                Private Chauffeur
-              </p>
+            <Link href="/" className="inline-flex items-center gap-3">
+              <Image
+                src={logo}
+                alt="Diamond Wings Chauffeur Logo"
+                className="h-12 w-auto"
+              />
 
-              <h2 className="mt-3 text-3xl font-bold tracking-[-0.05em]">
-                Executive Luxury Rides
-              </h2>
+              <div>
+                <p className="text-[10px] font-thin uppercase tracking-[0.28em] text-[#d8c7a3]">
+                  Private Chauffeur
+                </p>
+
+                <h2 className="mt-1 text-xl tracking-wide text-white md:text-3xl">
+                  Executive Luxury Rides
+                </h2>
+              </div>
             </Link>
 
-            <p className="mt-5 max-w-sm text-sm leading-7 text-white/55">
-              Luxury chauffeur service for airport transfers, corporate travel,
-              private events, and premium rides throughout Los Angeles.
+            <p className="mt-6 max-w-xl text-sm leading-7 text-white/50">
+              Discreet luxury transportation for airport pickups, executives,
+              private events, and VIP travel throughout Los Angeles.
             </p>
-
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="https://book.mylimobiz.com/v4/diamondwings"
-                target="_blank"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#f2eadc] px-6 py-3 text-sm font-bold text-[#090909] transition hover:bg-white"
-              >
-                Get a Quote
-                <ArrowRight size={16} />
-              </Link>
-
-              <a
-                href="tel:8186264592"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-6 py-3 text-sm font-bold text-white transition hover:bg-white/[0.09]"
-              >
-                <Phone size={16} className="text-[#d8c7a3]" />
-                Call Now
-              </a>
-            </div>
           </div>
 
-          <div>
-            <h3 className="mb-5 text-sm font-bold uppercase tracking-[0.25em] text-white/40">
-              Navigate
-            </h3>
+          <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
+            <Link
+              href="https://book.mylimobiz.com/v4/diamondwings"
+              target="_blank"
+              className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#d0a356] px-6 py-3 text-sm text-[#090909] transition hover:bg-white"
+            >
+              Get a Quote
+              <ArrowRight
+                size={16}
+                className="transition group-hover:translate-x-1"
+              />
+            </Link>
 
-            <ul className="space-y-3 text-sm text-white/60">
-              <li>
-                <a href="#services" className="transition hover:text-[#d8c7a3]">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#locations" className="transition hover:text-[#d8c7a3]">
-                  Locations
-                </a>
-              </li>
-              <li>
-                <a href="#fleet" className="transition hover:text-[#d8c7a3]">
-                  Fleet
-                </a>
-              </li>
-              <li>
-                <a href="#reviews" className="transition hover:text-[#d8c7a3]">
-                  Reviews
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="mb-5 text-sm font-bold uppercase tracking-[0.25em] text-white/40">
-              Services
-            </h3>
-
-            <ul className="space-y-3 text-sm text-white/60">
-              <li>Airport Transfers</li>
-              <li>Corporate Travel</li>
-              <li>Weddings & Events</li>
-              <li>Hourly Chauffeur</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="mb-5 text-sm font-bold uppercase tracking-[0.25em] text-white/40">
-              Los Angeles Areas
-            </h3>
-
-            <div className="grid gap-3 text-sm text-white/60">
-              <p className="flex items-center gap-2">
-                <MapPin size={15} className="text-[#d8c7a3]" />
-                Beverly Hills
-              </p>
-
-              <p className="flex items-center gap-2">
-                <MapPin size={15} className="text-[#d8c7a3]" />
-                West Hollywood
-              </p>
-
-              <p className="flex items-center gap-2">
-                <MapPin size={15} className="text-[#d8c7a3]" />
-                Malibu
-              </p>
-
-              <p className="flex items-center gap-2">
-                <MapPin size={15} className="text-[#d8c7a3]" />
-                LAX & Private Airports
-              </p>
-            </div>
+            <a
+              href="tel:8186264592"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-6 py-3 text-sm text-white transition hover:bg-white/[0.09]"
+            >
+              <Phone size={16} className="text-[#d8c7a3]" />
+              Call Now
+            </a>
           </div>
         </div>
+      </div>
 
-        <div className="flex flex-col justify-between gap-4 pt-7 text-sm text-white/35 md:flex-row md:items-center">
-          <p>
-            © {new Date().getFullYear()} Executive Luxury Rides. All rights
-            reserved.
-          </p>
+      {/* Full-width divider line */}
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-          <p className="text-white/30">
-            Private chauffeur service throughout Los Angeles.
+      <div className="mx-auto max-w-7xl px-0">
+        <div className="flex flex-col gap-6 py-6 md:flex-row md:items-center md:justify-between">
+          <nav className="flex flex-wrap gap-x-6 gap-y-3">
+            {links.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-xs uppercase tracking-[0.22em] text-white/40 transition hover:text-[#d8c7a3]"
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
+
+          <p className="text-xs text-white/30">
+            © {new Date().getFullYear()} Executive Luxury Rides
           </p>
         </div>
       </div>
+
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+      <p className="mt-5 text-center text-xs uppercase tracking-[0.22em] text-white/25">
+        Los Angeles • Beverly Hills • Malibu • LAX • Private Travel
+      </p>
     </footer>
   );
 }

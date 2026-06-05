@@ -19,7 +19,7 @@ import hourlyImg from "@/assets/services/hourly.png";
 const fadeUp: Variants = {
   hidden: {
     opacity: 0,
-    y: 35,
+    y: 28,
   },
   visible: {
     opacity: 1,
@@ -35,7 +35,7 @@ const stagger: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.13,
+      staggerChildren: 0.12,
     },
   },
 };
@@ -44,23 +44,23 @@ const services = [
   {
     title: "Airport Transfers",
     description:
-      "Smooth pickup and drop-off service for LAX, Burbank, private terminals, and surrounding airports.",
+      "Smooth, reliable transportation for airport arrivals, departures, and premium travel days.",
     image: airportImg,
     icon: Plane,
     tag: "Airport",
   },
   {
-    title: "Weddings & Events",
+    title: "Events & Special Nights",
     description:
-      "Elegant transportation for weddings, parties, red carpet events, anniversaries, and special nights.",
+      "Elegant private transportation for weddings, celebrations, nights out, and special occasions.",
     image: weddingImg,
     icon: CalendarHeart,
     tag: "Events",
   },
   {
-    title: "Corporate Travel",
+    title: "Executive Travel",
     description:
-      "Professional private rides for executives, business meetings, conferences, and VIP clients.",
+      "Professional chauffeur service for meetings, corporate travel, VIP guests, and business schedules.",
     image: corporateImg,
     icon: BriefcaseBusiness,
     tag: "Business",
@@ -68,7 +68,7 @@ const services = [
   {
     title: "Hourly Chauffeur",
     description:
-      "Book a private chauffeur by the hour for flexible, luxury transportation around the city.",
+      "Flexible hourly service for a private driver, multiple stops, and luxury transportation around the city.",
     image: hourlyImg,
     icon: Clock,
     tag: "Hourly",
@@ -79,99 +79,79 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-[#08090b] px-4 py-24 text-white md:px-8"
+      className="relative overflow-hidden bg-[#08090b] px-4 py-20 text-white md:px-8 md:py-24"
     >
-      {/* Background glow */}
-      <div className="absolute left-[-160px] top-20 h-96 w-96 rounded-full bg-[#f2eadc]/5 blur-3xl" />
-      <div className="absolute bottom-0 right-[-160px] h-96 w-96 rounded-full bg-white/5 blur-3xl" />
+      <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-[#d8c7a3]/20 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
         <motion.div
-          className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+          className="mx-auto mb-12 max-w-4xl text-center md:mb-14"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.25 }}
           variants={stagger}
         >
           <motion.div variants={fadeUp}>
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.32em] text-[#d8c7a3]">
+            <p className="mb-5 text-xs font-thin uppercase tracking-[0.28em] text-[#d8c7a3]">
               Premium Services
             </p>
 
-            <h2 className="max-w-3xl text-4xl font-bold leading-tight tracking-[-0.05em] md:text-6xl">
-              Transportation designed around comfort, privacy, and style.
+            <h2 className="mx-auto max-w-3xl text-3xl leading-[0.95] tracking-[0.02em] text-white md:text-4xl">
+              Luxury transportation for all rides.
             </h2>
           </motion.div>
-
-          <motion.p
-            variants={fadeUp}
-            className="max-w-md text-sm leading-7 text-white/60 md:text-base"
-          >
-            From airport transfers to private events, every ride is built to
-            feel smooth, professional, and effortless.
-          </motion.p>
         </motion.div>
 
         <motion.div
-          className="grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+          className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.18 }}
           variants={stagger}
         >
-          {services.map((service) => {
-            const Icon = service.icon;
-
+          {services.map((service, index) => {
             return (
-              <motion.article
+              <Link
                 key={service.title}
-                variants={fadeUp}
-                whileHover={{
-                  y: -8,
-                }}
-                transition={{
-                  duration: 0.25,
-                  ease: "easeOut",
-                }}
-                className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.035] shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+                href="https://book.mylimobiz.com/v4/diamondwings"
+                target="_blank"
+                className="block"
               >
-                <div className="relative h-60 overflow-hidden sm:h-64">
+                <motion.article
+                  variants={fadeUp}
+                  whileHover={{
+                    y: -6,
+                  }}
+                  transition={{
+                    duration: 0.25,
+                    ease: "easeOut",
+                  }}
+                  className="group relative min-h-[390px] cursor-pointer overflow-hidden rounded-lg border border-white/10 bg-[#0b0c0f] shadow-[0_22px_70px_rgba(0,0,0,0.38)]"
+                >
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                    className="object-cover object-center brightness-110 contrast-105 saturate-110 transition duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover object-center brightness-95 contrast-105 saturate-105 transition duration-700 group-hover:scale-105"
                   />
 
-                  {/* Light polish only — keeps images clear */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#08090b]/45 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#08090b] via-[#08090b]/15 to-transparent" />
 
-                  {/* Tiny top shine, not a dark overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-70" />
-
-                  <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-white/15 bg-black/35 px-4 py-2 shadow-[0_10px_35px_rgba(0,0,0,0.35)] backdrop-blur-xl">
-                    <Icon size={16} className="text-[#d8c7a3]" />
-                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-white">
-                      {service.tag}
-                    </span>
+                  <div className="absolute left-5 top-5 text-xs uppercase tracking-[0.28em] text-[#d8c7a3]/80">
+                    0{index + 1}
                   </div>
-                </div>
 
-                <div className="p-6">
-                  <h3 className="mb-3 text-2xl font-bold tracking-[-0.04em] text-white">
-                    {service.title}
-                  </h3>
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <h3 className="mb-5 text-xl leading-tight tracking-wide text-white md:text-2xl">
+                      {service.title}
+                    </h3>
 
-                  <p className="mb-6 min-h-[96px] text-sm leading-7 text-white/62">
-                    {service.description}
-                  </p>
-
-                  <div className="flex items-center justify-between gap-3">
+                    {/* <div className="flex items-center gap-3">
                     <Link
                       href="https://book.mylimobiz.com/v4/diamondwings"
                       target="_blank"
-                      className="group/btn inline-flex items-center gap-2 rounded-full bg-[#f2eadc] px-5 py-3 text-sm font-bold text-[#090909] transition hover:bg-white"
+                      className="group/btn inline-flex  items-center justify-center gap-2 rounded-xl bg-[#bda06e] px-5 py-3 text-sm  text-[#090909] transition hover:bg-white whitespace-nowrap"
                     >
                       Get Quote
                       <ArrowRight
@@ -182,13 +162,14 @@ export default function Services() {
 
                     <a
                       href="tel:8186264592"
-                      className="rounded-full border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-bold text-white transition hover:bg-white/[0.09]"
+                      className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/[0.06] px-5 py-3 text-sm  text-white backdrop-blur-xl transition hover:bg-white/[0.12]"
                     >
                       Call
                     </a>
+                  </div> */}
                   </div>
-                </div>
-              </motion.article>
+                </motion.article>
+              </Link>
             );
           })}
         </motion.div>

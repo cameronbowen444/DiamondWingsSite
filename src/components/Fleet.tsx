@@ -4,15 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Car,
-  Luggage,
-  Users,
-  Star,
-} from "lucide-react";
-
+import { ArrowLeft, ArrowRight, Luggage, Users, Star } from "lucide-react";
 
 import navigatorImg from "@/assets/fleet/navigator.png";
 import sprinterImg from "@/assets/fleet/sprinter.png";
@@ -97,55 +89,34 @@ export default function Fleet() {
   return (
     <section
       id="fleet"
-      className="relative overflow-hidden bg-[#08090b] px-4 py-24 text-white md:px-8"
+      className="relative overflow-hidden bg-[#08090b] px-4 py-20 text-white md:px-8 md:py-24"
     >
-      <div className="absolute left-1/2 top-24 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[#f2eadc]/5 blur-3xl" />
+      <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-[#d8c7a3]/20 to-transparent" />
 
-      <div className="relative z-10 mx-auto max-w-7xl">
+      <div className="relative z-10 mx-auto max-w-6xl">
         <motion.div
-          className="mx-auto mb-12 max-w-3xl text-center"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={fadeUp}
-        >
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-[#d8c7a3]">
-            Executive Fleet
-          </p>
+  className="mx-auto mb-10 max-w-4xl text-center"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+  variants={fadeUp}
+>
+  <p className="mb-5 text-xs font-thin uppercase tracking-[0.28em] text-[#d8c7a3]">
+    Executive Fleet
+  </p>
 
-          <h2 className="text-4xl font-bold leading-tight tracking-[-0.06em] md:text-6xl">
-            Sedans, SUVs, and executive vans.
-          </h2>
+  <h2 className="mx-auto max-w-3xl text-3xl leading-[0.95] tracking-[0.02em] text-white md:text-4xl">
+    Sedans, SUVs, and executive vans.
+  </h2>
+</motion.div>
 
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-white/55">
-            Right-sized luxury for airport transfers, corporate travel, private
-            events, and VIP transportation.
-          </p>
-        </motion.div>
-
-        <div className="relative mx-auto max-w-5xl">
-          <button
-            onClick={previousFleet}
-            className="absolute left-3 top-[38%] z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white backdrop-blur-xl transition hover:border-[#d8c7a3]/50 hover:bg-white/10 md:-left-6"
-            aria-label="Previous vehicle"
-          >
-            <ArrowLeft size={20} />
-          </button>
-
-          <button
-            onClick={nextFleet}
-            className="absolute right-3 top-[38%] z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white backdrop-blur-xl transition hover:border-[#d8c7a3]/50 hover:bg-white/10 md:-right-6"
-            aria-label="Next vehicle"
-          >
-            <ArrowRight size={20} />
-          </button>
-
+        <div className="relative mx-auto max-w-4xl">
           <AnimatePresence mode="wait">
             <motion.article
               key={activeFleet.name}
               initial={{
                 opacity: 0,
-                x: 35,
+                x: 25,
                 scale: 0.98,
               }}
               animate={{
@@ -155,86 +126,72 @@ export default function Fleet() {
               }}
               exit={{
                 opacity: 0,
-                x: -35,
+                x: -25,
                 scale: 0.98,
               }}
               transition={{
-                duration: 0.45,
+                duration: 0.4,
                 ease: "easeOut",
               }}
-              className="overflow-hidden rounded-[1.8rem] border border-white/10 bg-white/[0.035] shadow-[0_35px_100px_rgba(0,0,0,0.42)] backdrop-blur-2xl"
+              className="overflow-hidden rounded-lg border border-white/10 bg-[#0b0c0f] shadow-[0_22px_70px_rgba(0,0,0,0.38)]"
             >
-              <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
-                <div className="relative h-[240px] overflow-hidden sm:h-[320px] lg:h-[430px]">
+              <div className="grid md:grid-cols-[1fr_0.9fr]">
+                <div className="relative h-[240px] overflow-hidden sm:h-[300px] lg:h-[330px]">
                   <Image
                     src={activeFleet.image}
                     alt={activeFleet.name}
                     fill
                     priority
-                    sizes="(max-width: 1024px) 100vw, 55vw"
-                    className="object-cover object-center brightness-110 contrast-105 saturate-110 transition duration-700"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover object-center brightness-105 contrast-105 saturate-105"
                   />
 
-                  {/* Light image polish only — keeps vehicles clear */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#08090b]/35 via-transparent to-transparent" />
-
-                  {/* Desktop side fade, much lighter than before */}
-                  <div className="absolute inset-0 hidden lg:block lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#08090b]/32" />
-
-                  {/* Small shine so image feels premium, not dark */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-60" />
-
-                  <div className="absolute left-5 top-5 rounded-full border border-white/15 bg-black/40 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[#d8c7a3] shadow-[0_10px_35px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+                  <div className="absolute left-4 top-4 rounded-full border border-white/10 bg-black/55 px-4 py-2 text-[10px] uppercase tracking-[0.22em] text-[#d8c7a3] backdrop-blur-xl">
                     {activeFleet.category}
                   </div>
                 </div>
 
-                <div className="flex flex-col justify-center px-6 py-8 md:px-10">
-                  <div className="mb-6 flex flex-wrap gap-3">
+                <div className="flex flex-col justify-center px-5 py-6 md:px-7 lg:px-8">
+                  <div className="mb-5 flex flex-wrap gap-2">
                     <StatBadge
-                      icon={<Users size={15} />}
+                      icon={<Users size={14} />}
                       label="Passengers"
                       value={activeFleet.passengers}
                     />
 
                     <StatBadge
-                      icon={<Luggage size={15} />}
+                      icon={<Luggage size={14} />}
                       label="Luggage"
                       value={activeFleet.luggage}
                     />
-
-                    <StatBadge
-                      icon={<Car size={15} />}
-                      label="Year"
-                      value={activeFleet.year}
-                    />
                   </div>
 
-                  <h3 className="text-3xl font-bold tracking-[-0.05em] md:text-5xl">
+                  <h3 className="text-2xl leading-tight tracking-wide text-white md:text-3xl">
                     {activeFleet.name}
                   </h3>
 
-                  <p className="mt-4 text-sm leading-7 text-white/55 md:text-base">
+                  <p className="mt-3 max-w-md text-sm leading-7 text-white/55">
                     {activeFleet.description}
                   </p>
 
-                  <div className="mt-6 flex flex-wrap gap-3">
+                  <div className="mt-5 flex flex-wrap gap-2">
                     {activeFleet.features.map((feature) => (
                       <div
                         key={feature}
-                        className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs text-white/70"
+                        className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-white/65"
                       >
-                        <Star size={13} className="text-[#d8c7a3]" />
+                        <Star size={12} className="text-[#d8c7a3]" />
                         {feature}
                       </div>
                     ))}
                   </div>
 
-                  <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  {/* Mobile buttons stay inside the card */}
+                  <div className="mt-6 flex flex-col gap-3 sm:flex-row md:hidden">
                     <Link
                       href="https://book.mylimobiz.com/v4/diamondwings"
                       target="_blank"
-                      className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#f2eadc] px-6 py-3.5 text-sm font-bold text-[#090909] shadow-[0_0_45px_rgba(242,234,220,0.16)] transition hover:bg-white"
+                      className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#d0a356] px-6 py-3 text-sm text-[#090909] transition hover:bg-white"
                     >
                       Reserve This
                       <ArrowRight
@@ -245,7 +202,7 @@ export default function Fleet() {
 
                     <a
                       href="tel:8182924112"
-                      className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.04] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-white/[0.09]"
+                      className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.04] px-6 py-3 text-sm text-white transition hover:bg-white/[0.09]"
                     >
                       Call Availability
                     </a>
@@ -255,15 +212,70 @@ export default function Fleet() {
             </motion.article>
           </AnimatePresence>
 
-          <div className="mt-7 flex justify-center gap-3">
+          {/* Mobile arrows stay over the image */}
+          <button
+            onClick={previousFleet}
+            className="absolute left-3 top-[30%] z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/70 text-white backdrop-blur-xl transition hover:border-[#d8c7a3]/50 hover:bg-white/10 md:hidden"
+            aria-label="Previous vehicle"
+          >
+            <ArrowLeft size={18} />
+          </button>
+
+          <button
+            onClick={nextFleet}
+            className="absolute right-3 top-[30%] z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/70 text-white backdrop-blur-xl transition hover:border-[#d8c7a3]/50 hover:bg-white/10 md:hidden"
+            aria-label="Next vehicle"
+          >
+            <ArrowRight size={18} />
+          </button>
+
+          {/* Desktop controls outside the card */}
+          <div className="mt-5 hidden items-center justify-center gap-3 md:flex">
+            <button
+              onClick={previousFleet}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white backdrop-blur-xl transition hover:border-[#d8c7a3]/50 hover:bg-white/[0.09]"
+              aria-label="Previous vehicle"
+            >
+              <ArrowLeft size={18} />
+            </button>
+
+            <Link
+              href="https://book.mylimobiz.com/v4/diamondwings"
+              target="_blank"
+              className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#d0a356] px-7 py-3 text-sm text-[#090909] transition hover:bg-white"
+            >
+              Reserve This
+              <ArrowRight
+                size={17}
+                className="transition group-hover:translate-x-1"
+              />
+            </Link>
+
+            <a
+              href="tel:8182924112"
+              className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.04] px-7 py-3 text-sm text-white transition hover:bg-white/[0.09]"
+            >
+              Call Availability
+            </a>
+
+            <button
+              onClick={nextFleet}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white backdrop-blur-xl transition hover:border-[#d8c7a3]/50 hover:bg-white/[0.09]"
+              aria-label="Next vehicle"
+            >
+              <ArrowRight size={18} />
+            </button>
+          </div>
+
+          <div className="mt-6 flex justify-center gap-3">
             {fleets.map((vehicle, index) => (
               <button
                 key={vehicle.name}
                 onClick={() => setActiveIndex(index)}
-                className={`h-2.5 rounded-full transition-all ${
+                className={`h-2 rounded-full transition-all ${
                   activeIndex === index
-                    ? "w-10 bg-[#f2eadc]"
-                    : "w-2.5 bg-white/20 hover:bg-white/40"
+                    ? "w-9 bg-[#d0a356]"
+                    : "w-2 bg-white/20 hover:bg-white/40"
                 }`}
                 aria-label={`View ${vehicle.name}`}
               />
@@ -283,9 +295,9 @@ type StatBadgeProps = {
 
 function StatBadge({ icon, label, value }: StatBadgeProps) {
   return (
-    <div className="flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-2 backdrop-blur-xl">
+    <div className="flex items-center gap-2 rounded-full border border-white/10 bg-black/45 px-3 py-2 backdrop-blur-xl">
       <span className="text-[#d8c7a3]">{icon}</span>
-      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/45">
+      <span className="text-[9px] uppercase tracking-[0.16em] text-white/45">
         {label}
       </span>
       <strong className="text-xs text-white">{value}</strong>
