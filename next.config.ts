@@ -1,3 +1,4 @@
+// next.config.ts
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -5,22 +6,22 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/about-us",
-        destination: "/#about",
+        destination: "/",
         permanent: true,
       },
       {
         source: "/fleet",
-        destination: "/#fleet",
+        destination: "/",
         permanent: true,
       },
       {
         source: "/reservations",
-        destination: "/#contact",
+        destination: "/",
         permanent: true,
       },
       {
         source: "/contact-us",
-        destination: "/#contact",
+        destination: "/",
         permanent: true,
       },
     ];
